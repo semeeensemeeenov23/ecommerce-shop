@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #26b864;
+  --color-primary-dark: #1f9a52;
+  --color-dark: #0f172a;
+  --color-darker: #020617;
+  --color-gray: #64748b;
+  --color-light: #f8fafc;
+}
+
+body {
+  background-color: var(--color-light);
+  color: #1e293b;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+/* Добавьте в конец файла */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Плавные переходы для всех элементов */
+button, a, input, select {
+  transition: all 0.2s ease;
+}
+
+/* Сглаживание анимаций */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-in {
+  animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+/* Стили для Swiper - увеличить отступ от карточек */
+.swiper-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #26b864 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Увеличить отступ для контейнера слайдера */
+.swiper {
+  padding-bottom: 3rem !important;
+}
