@@ -1,16 +1,18 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
 
+const basePath = import.meta.env.BASE_URL;
+
 const gifUrls = [
-  "/images/gifs/gif1.gif",
-  "/images/gifs/gif2.gif",
-  "/images/gifs/gif3.gif",
-  "/images/gifs/gif4.gif",
-  "/images/gifs/gif5.gif",
-  "/images/gifs/gif6.gif",
-  "/images/gifs/gif7.gif",
-  "/images/gifs/gif8.gif",
-  "/images/gifs/gif9.gif",
+  `${basePath}images/gifs/gif1.gif`,
+  `${basePath}images/gifs/gif2.gif`,
+  `${basePath}images/gifs/gif3.gif`,
+  `${basePath}images/gifs/gif4.gif`,
+  `${basePath}images/gifs/gif5.gif`,
+  `${basePath}images/gifs/gif6.gif`,
+  `${basePath}images/gifs/gif7.gif`,
+  `${basePath}images/gifs/gif8.gif`,
+  `${basePath}images/gifs/gif9.gif`,
 ];
 
 interface FloatingGifItem {
@@ -93,7 +95,6 @@ export default function FloatingGifs({
     
     // Устанавливаем таймер на скрытие
     displayTimerRef.current = setTimeout(() => {
-      console.log("Таймер сработал, скрываем гифку через", displayTime, "мс");
       setCurrentGif(null);
       displayTimerRef.current = null;
     }, displayTime);
@@ -106,7 +107,6 @@ export default function FloatingGifs({
     }
     idleTimerRef.current = setTimeout(() => {
       if (!isVideoPlaying && !currentGif) {
-        console.log("Таймер бездействия сработал, показываем гифку");
         showGif();
       }
     }, idleTime);
@@ -114,7 +114,6 @@ export default function FloatingGifs({
 
   // Полный сброс
   const resetAndHide = useCallback(() => {
-    console.log("Активность пользователя - сброс");
     if (currentGif) {
       forceHideGif();
     }
@@ -131,7 +130,6 @@ export default function FloatingGifs({
     // Проверяем каждую секунду, не превышено ли время показа
     const interval = setInterval(() => {
       if (currentGif && (Date.now() - showTimeRef.current) >= displayTime) {
-        console.log("Принудительное скрытие по таймеру");
         setCurrentGif(null);
         if (displayTimerRef.current) {
           clearTimeout(displayTimerRef.current);

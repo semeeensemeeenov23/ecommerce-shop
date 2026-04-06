@@ -16,7 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename="/ecommerce-shop">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
